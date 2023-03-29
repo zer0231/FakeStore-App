@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">FakeStore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Title</string>
+    <string name="price">price</string>
+    <string name="category">Category</string>
+    <string name="product_s_image">Product\'s image</string>
+    <string name="description">This is the description</string>
+    <string name="add_a_product">Add a product</string>
+    <string name="create_product">Create Product</string>
+    <string name="name_of_product">Name of product</string>
+    <string name="enter_url_of_image_of_product">Enter url of image of product</string>
+    <string name="description_of_your_product">Description of your product</string>
+    <string name="price_of_your_product">Price of your product</string>
+    <string name="drop_down_menu_of_categories">drop down menu of categories</string>
+    <string name="error_message_here">Error message here</string>
+    <string name="try_again">Try again</string>
+    <string name="add_a_new_product">add a new product</string>
+    <string name="description_">Description</string>
+    <string name="image_url">Image Url</string>
+    <string name="name">Name</string>
+</resources>

@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.FakeStore" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#1c7293</item>
+        <!--        this is the main color of buttons-->
+        <item name="colorPrimaryVariant">#065a82</item>
+        <!--        this is the text color inside of buttons-->
+        <item name="colorOnPrimary">#9eb3c2</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <!--        this is the tint of button-->
+        <item name="colorOnSecondary">#9C27B0</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <!--        This will change of textviews only but not of inside recycler view-->
+        <item name="android:textColor">@color/black</item>
+        <item name="android:windowBackground">@color/grey</item>
+    </style>
+</resources>

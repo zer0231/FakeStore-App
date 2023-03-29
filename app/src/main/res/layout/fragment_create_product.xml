@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        tools:context=".fragments.CreateProductFragment">
+
+        <TextView
+            android:id="@+id/add_product_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_a_product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/product_name_tvl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:errorEnabled="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_product_tv"
+            app:placeholderText="@string/name_of_product">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/product_name_etv"
+                android:layout_width="match_parent"
+                android:hint="@string/name"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/product_image_tvl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorEnabled="true"
+            android:paddingTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_name_tvl"
+            app:placeholderText="@string/enter_url_of_image_of_product">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/product_image_etv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/image_url" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/product_desc_tvl"
+            android:layout_width="match_parent"
+            app:errorEnabled="true"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/description"
+            android:paddingTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_image_tvl"
+            app:placeholderText="@string/description_of_your_product">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/product_description_etv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/description_" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/product_price_tvl"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/price"
+            android:paddingTop="16dp"
+
+            app:layout_constraintEnd_toStartOf="@id/categories_spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_desc_tvl"
+            app:placeholderText="Price">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/product_price_etv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/price"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/categories_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:contentDescription="@string/drop_down_menu_of_categories"
+            app:layout_constraintBottom_toBottomOf="@id/product_price_tvl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/product_price_tvl"
+            app:layout_constraintTop_toTopOf="@id/product_price_tvl" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/create_product_btn"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:text="@string/create_product"
+            app:layout_constraintTop_toBottomOf="@id/product_price_tvl" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
