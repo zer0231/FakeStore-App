@@ -7,24 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.fakestore.R;
-import com.example.fakestore.ViewModels.ProductViewModel;
+import com.example.fakestore.viewModels.ProductViewModel;
 import com.example.fakestore.adapters.ProductAdapter;
 import com.example.fakestore.databinding.FragmentProductsBinding;
-import com.example.fakestore.models.ProductModel;
-import com.example.fakestore.utilities.RetrofitClient;
-
-import java.util.List;
-
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ProductsFragment extends Fragment {
     private FragmentProductsBinding fragmentProductsBinding;

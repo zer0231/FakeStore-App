@@ -1,4 +1,4 @@
-package com.example.fakestore.ViewModels;
+package com.example.fakestore.viewModels;
 
 import android.content.Context;
 import android.view.View;
@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.fakestore.Repositorites.ProductRepository;
+import com.example.fakestore.repositorites.ProductRepository;
 import com.example.fakestore.models.ProductModel;
 
 

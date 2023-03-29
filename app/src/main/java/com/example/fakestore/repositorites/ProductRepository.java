@@ -1,9 +1,8 @@
-package com.example.fakestore.Repositorites;
+package com.example.fakestore.repositorites;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
