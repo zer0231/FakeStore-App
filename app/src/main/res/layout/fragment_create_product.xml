@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -28,8 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/add_product_tv"
             app:placeholderText="@string/name_of_product">
@@ -37,9 +36,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/product_name_etv"
                 android:layout_width="match_parent"
-                android:hint="@string/name"
                 android:layout_height="wrap_content"
-                />
+                android:hint="@string/name" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -47,8 +45,8 @@
             android:id="@+id/product_image_tvl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:errorEnabled="true"
             android:paddingTop="16dp"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/product_name_tvl"
@@ -65,10 +63,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/product_desc_tvl"
             android:layout_width="match_parent"
-            app:errorEnabled="true"
             android:layout_height="wrap_content"
             android:contentDescription="@string/description"
             android:paddingTop="16dp"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/product_image_tvl"
@@ -114,9 +112,9 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/create_product_btn"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             android:paddingTop="16dp"
             android:text="@string/create_product"
             app:layout_constraintTop_toBottomOf="@id/product_price_tvl" />

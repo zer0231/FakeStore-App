@@ -1,10 +1,7 @@
 package com.example.fakestore.utilities;
 
-import androidx.lifecycle.MutableLiveData;
 
-import com.example.fakestore.models.ProductModel;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
