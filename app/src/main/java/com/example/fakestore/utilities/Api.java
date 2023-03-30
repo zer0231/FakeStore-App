@@ -16,7 +16,7 @@ public interface Api {
     Call<List<ProductModel>> getProduct();
 
     @POST("products")
-    Call<ProductModel> createUser(@Body ProductModel productModel);
+    Call<ProductModel> createProduct(@Body ProductModel productModel);
 
     @GET("products/categories")
     Call<List<String>> getCategories();

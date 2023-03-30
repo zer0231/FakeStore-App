@@ -46,5 +46,8 @@
         <action
             android:id="@+id/action_createProductFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <action
+            android:id="@+id/action_createProductFragment_to_productsFragment2"
+            app:destination="@id/productsFragment2" />
     </fragment>
 </navigation>

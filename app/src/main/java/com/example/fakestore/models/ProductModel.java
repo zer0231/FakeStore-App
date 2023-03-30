@@ -18,14 +18,6 @@ public class ProductModel implements Serializable { //To make this object serial
     @SerializedName("price")
     private String price;
 
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public ProductModel(String title, String description, String category, String imageUrl, String id, String price) {
         this.title = title;
         this.description = description;
@@ -34,14 +26,14 @@ public class ProductModel implements Serializable { //To make this object serial
         this.id = id;
         this.price = price;
     }
-    public ProductModel(String title, String description, String category, String imageUrl, String price) {
+
+    public ProductModel(String title, String description, String category, String imageUrl, String price) { //Without ID because this is used for posting
         this.title = title;
         this.description = description;
         this.category = category;
         this.imageUrl = imageUrl;
         this.price = price;
     }
-
 
     public String getTitle() {
         return title;
@@ -81,5 +73,13 @@ public class ProductModel implements Serializable { //To make this object serial
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }

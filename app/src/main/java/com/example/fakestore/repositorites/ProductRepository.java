@@ -11,6 +11,7 @@ import androidx.navigation.Navigation;
 import com.example.fakestore.R;
 import com.example.fakestore.models.ProductModel;
 import com.example.fakestore.utilities.RetrofitClient;
+import com.example.fakestore.utilities.StateLiveData;
 
 import java.util.List;
 
@@ -19,64 +20,65 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductRepository {
-    final MutableLiveData<List<ProductModel>> productMutableLiveData = new MutableLiveData<>();
-    final MutableLiveData<List<String>> categoriesMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<ProductModel> postProductMutableData = new MutableLiveData<>();
-    public MutableLiveData<List<ProductModel>> requestProducts() {
+
+
+    public ProductRepository() {
+    }
+
+
+    public StateLiveData<List<ProductModel>> requestProducts() {
+        StateLiveData<List<ProductModel>> productMutableLiveData = new StateLiveData<>();
         Call<List<ProductModel>> productsCall = RetrofitClient.getInstance().getApi().getProduct();
         productsCall.enqueue(new Callback<List<ProductModel>>() {
             @Override
             public void onResponse(Call<List<ProductModel>> call, Response<List<ProductModel>> response) {
-                productMutableLiveData.setValue(response.body());
+//                productMutableLiveData.setValue(response.body());
+                productMutableLiveData.setSuccess(response.body());
+
             }
 
             @Override
             public void onFailure(Call<List<ProductModel>> call, Throwable t) {
-
+                productMutableLiveData.postError(t);
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("errorMessage", t);
+//                Navigation.findNavController(???).navigate(R.id.action_productsFragment2_to_errorFragment);
             }
         });
         return productMutableLiveData;
     }
 
-    public MutableLiveData<List<String>> requestCategories(){
+    public StateLiveData<List<String>> requestCategories() {
+        StateLiveData<List<String>> categoriesMutableLiveData = new StateLiveData<>();
         Call<List<String>> categories = RetrofitClient.getInstance().getApi().getCategories();
         categories.enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                categoriesMutableLiveData.setValue(response.body());
+                categoriesMutableLiveData.setSuccess(response.body());
             }
 
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
-
+                categoriesMutableLiveData.postError(t);
             }
         });
-    return categoriesMutableLiveData;
+        return categoriesMutableLiveData;
     }
 
-    public MutableLiveData<ProductModel> postProduct(ProductModel productModel, Context parentContext, View parentView) {
-        Call<ProductModel> createProduct=  RetrofitClient.getInstance().getApi().createUser(productModel);
+    public StateLiveData<ProductModel> postProduct(ProductModel productModel) {
+        StateLiveData<ProductModel> postProductMutableData = new StateLiveData<>();
+        Call<ProductModel> createProduct = RetrofitClient.getInstance().getApi().createProduct(productModel);
         createProduct.enqueue(new Callback<ProductModel>() {
             @Override
             public void onResponse(@NonNull Call<ProductModel> call, @NonNull Response<ProductModel> response) {
-
-//                ProductModel productModel = response.body();
-                postProductMutableData.setValue(response.body());
-//                if (response.isSuccessful()) {
-//                    assert productModel != null;
-//                    Toast.makeText(parentContext, "Product Added with id: " + productModel.getId(), Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(parentContext, "Failed to add please try again", Toast.LENGTH_SHORT).show();
-//                }
+                postProductMutableData.setSuccess(response.body());
             }
 
             @Override
             public void onFailure(@NonNull Call<ProductModel> call, @NonNull Throwable t) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("errorMessage", t);
-                Navigation.findNavController(parentView).navigate(R.id.action_createProductFragment_to_errorFragment, bundle);
+                postProductMutableData.postError(t);
             }
         });
-        return  postProductMutableData;
+        return postProductMutableData;
     }
 }
