@@ -4,17 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.fakestore.R;
 import com.example.fakestore.models.ProductModel;
-import com.example.fakestore.models.StateDataModel;
 import com.example.fakestore.viewModels.ProductViewModel;
 import com.example.fakestore.adapters.ProductAdapter;
 import com.example.fakestore.databinding.FragmentProductsBinding;
@@ -39,7 +36,7 @@ public class ProductsFragment extends Fragment {
         ProductViewModel productViewModel = new ProductViewModel();
 
         //Implementing ViewModel with livedata
-        productViewModel.getProducts().observe(getViewLifecycleOwner(), products -> { //products is the mutableLiveData returned from the ProductViewModel
+        productViewModel.getProducts().observe(getViewLifecycleOwner(), products -> { //products is the stateLiveData extended from mutableLiveData returned from the ProductViewModel
             switch (products.getStatus()) {
                 case SUCCESS:
                     fragmentProductsBinding.circularProgressIndicator.setVisibility(View.GONE);

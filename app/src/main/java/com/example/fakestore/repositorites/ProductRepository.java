@@ -1,14 +1,8 @@
 package com.example.fakestore.repositorites;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
-import androidx.navigation.Navigation;
 
-import com.example.fakestore.R;
 import com.example.fakestore.models.ProductModel;
 import com.example.fakestore.utilities.RetrofitClient;
 import com.example.fakestore.utilities.StateLiveData;
@@ -31,18 +25,14 @@ public class ProductRepository {
         Call<List<ProductModel>> productsCall = RetrofitClient.getInstance().getApi().getProduct();
         productsCall.enqueue(new Callback<List<ProductModel>>() {
             @Override
-            public void onResponse(Call<List<ProductModel>> call, Response<List<ProductModel>> response) {
-//                productMutableLiveData.setValue(response.body());
+            public void onResponse(@NonNull Call<List<ProductModel>> call, @NonNull Response<List<ProductModel>> response) {
                 productMutableLiveData.setSuccess(response.body());
 
             }
 
             @Override
-            public void onFailure(Call<List<ProductModel>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<ProductModel>> call, @NonNull Throwable t) {
                 productMutableLiveData.postError(t);
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("errorMessage", t);
-//                Navigation.findNavController(???).navigate(R.id.action_productsFragment2_to_errorFragment);
             }
         });
         return productMutableLiveData;
@@ -53,12 +43,12 @@ public class ProductRepository {
         Call<List<String>> categories = RetrofitClient.getInstance().getApi().getCategories();
         categories.enqueue(new Callback<List<String>>() {
             @Override
-            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+            public void onResponse(@NonNull Call<List<String>> call, @NonNull Response<List<String>> response) {
                 categoriesMutableLiveData.setSuccess(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<String>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<String>> call, @NonNull Throwable t) {
                 categoriesMutableLiveData.postError(t);
             }
         });

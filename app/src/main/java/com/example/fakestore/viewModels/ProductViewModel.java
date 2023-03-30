@@ -39,8 +39,9 @@ public class ProductViewModel extends ViewModel {
         }
         return mutableCategoriesLiveData;
     }
-    public StateLiveData<ProductModel> postProduct(ProductModel productModel){
-        if(mutablePostIDLiveData == null){
+
+    public StateLiveData<ProductModel> postProduct(ProductModel productModel) {
+        if (mutablePostIDLiveData == null) {
             mutablePostIDLiveData = productRepository.postProduct(productModel);
         }
         return mutablePostIDLiveData;
