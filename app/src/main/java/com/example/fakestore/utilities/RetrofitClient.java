@@ -1,7 +1,5 @@
 package com.example.fakestore.utilities;
 
-
-
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;

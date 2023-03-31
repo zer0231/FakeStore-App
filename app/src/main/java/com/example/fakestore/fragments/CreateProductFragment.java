@@ -43,7 +43,6 @@ public class CreateProductFragment extends Fragment {
                     fragmentCreateProductBinding.categoriesSpinner.setSelection(0);
                     break;
                 case ERROR:
-
                     Toast.makeText(requireContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
                     break;
             }
@@ -68,6 +67,27 @@ public class CreateProductFragment extends Fragment {
 
             });
 
+//            Call<ProductModel> createProduct = RetrofitClient.getInstance().getApi().createUser(new ProductModel(name, description, category, imageUrl, price));
+//            createProduct.enqueue(new Callback<ProductModel>() {
+//                @Override
+//                public void onResponse(@NonNull Call<ProductModel> call, @NonNull Response<ProductModel> response) {
+//
+//                    ProductModel productModel = response.body();
+//                    if (response.isSuccessful()) {
+//                        assert productModel != null;
+//                        Toast.makeText(requireContext(), "Product Added with id: " + productModel.getId(), Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(requireContext(), "Failed to add please try again", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(@NonNull Call<ProductModel> call, @NonNull Throwable t) {
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("errorMessage", t);
+//                    Navigation.findNavController(requireView()).navigate(R.id.action_createProductFragment_to_errorFragment, bundle);
+//                }
+//            });
         });
         return fragmentCreateProductBinding.getRoot();
     }
