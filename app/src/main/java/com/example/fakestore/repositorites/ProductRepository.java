@@ -1,15 +1,11 @@
 package com.example.fakestore.repositorites;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
-import androidx.navigation.Navigation;
+import androidx.lifecycle.LiveData;
 
-import com.example.fakestore.R;
 import com.example.fakestore.models.ProductModel;
+import com.example.fakestore.utilities.ProductDatabase;
 import com.example.fakestore.utilities.RetrofitClient;
 import com.example.fakestore.utilities.StateLiveData;
 
@@ -21,7 +17,6 @@ import retrofit2.Response;
 
 public class ProductRepository {
 
-
     public ProductRepository() {
     }
 
@@ -32,17 +27,12 @@ public class ProductRepository {
         productsCall.enqueue(new Callback<List<ProductModel>>() {
             @Override
             public void onResponse(Call<List<ProductModel>> call, Response<List<ProductModel>> response) {
-//                productMutableLiveData.setValue(response.body());
                 productMutableLiveData.setSuccess(response.body());
-
             }
 
             @Override
             public void onFailure(Call<List<ProductModel>> call, Throwable t) {
                 productMutableLiveData.postError(t);
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("errorMessage", t);
-//                Navigation.findNavController(???).navigate(R.id.action_productsFragment2_to_errorFragment);
             }
         });
         return productMutableLiveData;
@@ -81,4 +71,11 @@ public class ProductRepository {
         });
         return postProductMutableData;
     }
+
+    public LiveData<List<ProductModel>> fetchProductsDB(ProductDatabase productDatabase) {
+// USE LIVEDATA FOR ASYNC TASK
+        return productDatabase.productDao().getAllProducts();
+
+    }
+
 }

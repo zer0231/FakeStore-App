@@ -1,9 +1,14 @@
 package com.example.fakestore.models;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
+@Entity(tableName = "Product_table")
 public class ProductModel implements Serializable { //To make this object serializable
     @SerializedName("title")
     private String title;
@@ -13,12 +18,12 @@ public class ProductModel implements Serializable { //To make this object serial
     private String category;
     @SerializedName("image")
     private String imageUrl;
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
-    private String id;
+    private long id;
     @SerializedName("price")
     private String price;
-
-    public ProductModel(String title, String description, String category, String imageUrl, String id, String price) {
+    public ProductModel(String title, String description, String category, String imageUrl, long id, String price) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -26,7 +31,11 @@ public class ProductModel implements Serializable { //To make this object serial
         this.id = id;
         this.price = price;
     }
+    @Ignore
+    public ProductModel() {
 
+    }
+    @Ignore
     public ProductModel(String title, String description, String category, String imageUrl, String price) { //Without ID because this is used for posting
         this.title = title;
         this.description = description;
@@ -67,11 +76,11 @@ public class ProductModel implements Serializable { //To make this object serial
         this.imageUrl = imageUrl;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

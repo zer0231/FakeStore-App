@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +43,6 @@ public class CreateProductFragment extends Fragment {
                     fragmentCreateProductBinding.categoriesSpinner.setSelection(0);
                     break;
                 case ERROR:
-
                     Toast.makeText(requireContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
                     break;
             }

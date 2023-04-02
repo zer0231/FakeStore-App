@@ -1,25 +1,22 @@
 package com.example.fakestore.viewModels;
 
-import android.content.Context;
-import android.view.View;
-
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.example.fakestore.repositorites.ProductRepository;
 import com.example.fakestore.models.ProductModel;
+import com.example.fakestore.utilities.ProductDatabase;
 import com.example.fakestore.utilities.StateLiveData;
-
 
 import java.util.List;
 
+// TODO: lOAD FROM DB AFTER ALL THE DATA HAS BEEN REQUESTED
 public class ProductViewModel extends ViewModel {
     private StateLiveData<List<ProductModel>> mutableProductsLiveData;
+    private LiveData<List<ProductModel>> mutableProductsLiveOfflineData;
     private StateLiveData<List<String>> mutableCategoriesLiveData;
     private StateLiveData<ProductModel> mutablePostIDLiveData;
+
     private final ProductRepository productRepository;
 
     public ProductViewModel() {
@@ -32,6 +29,13 @@ public class ProductViewModel extends ViewModel {
         }
         return mutableProductsLiveData;
     }
+//THE DATABASE VIEW-MODEL DIRECTLY FETCH FROM REPOSITORY
+//    public LiveData<List<ProductModel>> getAllProducts_offline(ProductDatabase productDatabase) {
+//        if (mutableProductsLiveOfflineData == null) {
+//            mutableProductsLiveOfflineData = productRepository.fetchProductsDB(productDatabase);
+//        }
+//        return mutableProductsLiveOfflineData;
+//    }
 
     public StateLiveData<List<String>> getCategories() {
         if (mutableCategoriesLiveData == null) {
@@ -39,8 +43,9 @@ public class ProductViewModel extends ViewModel {
         }
         return mutableCategoriesLiveData;
     }
-    public StateLiveData<ProductModel> postProduct(ProductModel productModel){
-        if(mutablePostIDLiveData == null){
+
+    public StateLiveData<ProductModel> postProduct(ProductModel productModel) {
+        if (mutablePostIDLiveData == null) {
             mutablePostIDLiveData = productRepository.postProduct(productModel);
         }
         return mutablePostIDLiveData;
