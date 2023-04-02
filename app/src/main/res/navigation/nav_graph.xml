@@ -43,11 +43,11 @@
         android:name="com.example.fakestore.fragments.CreateProductFragment"
         android:label="fragment_create_product"
         tools:layout="@layout/fragment_create_product" >
-        <action
-            android:id="@+id/action_createProductFragment_to_errorFragment"
-            app:destination="@id/errorFragment" />
-        <action
-            android:id="@+id/action_createProductFragment_to_productsFragment2"
-            app:destination="@id/productsFragment2" />
+<!--        <action-->
+<!--            android:id="@+id/action_createProductFragment_to_errorFragment"-->
+<!--            app:destination="@id/errorFragment" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_createProductFragment_to_productsFragment2"-->
+<!--            app:destination="@id/productsFragment2" />-->
     </fragment>
 </navigation>

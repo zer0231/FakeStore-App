@@ -25,7 +25,7 @@ public class StateLiveData<T> extends MutableLiveData<StateDataModel> {
 
     /**
      * Use this to put the Data on a SUCCESS DataStatus
-     * @param data
+     * @param data passes data
      */
     public void postSuccess(T data) {
         postValue(new StateDataModel<T>().success(data));

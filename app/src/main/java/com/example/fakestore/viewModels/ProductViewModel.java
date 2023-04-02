@@ -29,17 +29,17 @@ public class ProductViewModel extends ViewModel {
         }
         return mutableProductsLiveData;
     }
-//THE DATABASE VIEW-MODEL DIRECTLY FETCH FROM REPOSITORY
-//    public LiveData<List<ProductModel>> getAllProducts_offline(ProductDatabase productDatabase) {
-//        if (mutableProductsLiveOfflineData == null) {
-//            mutableProductsLiveOfflineData = productRepository.fetchProductsDB(productDatabase);
-//        }
-//        return mutableProductsLiveOfflineData;
-//    }
+    //THE DATABASE VIEW-MODEL DIRECTLY FETCH FROM REPOSITORY
+    public LiveData<List<ProductModel>> getAllProductsDB(ProductDatabase productDatabase) {
+        if (mutableProductsLiveOfflineData == null) {
+            mutableProductsLiveOfflineData = productRepository.getAllProductsDB(productDatabase);
+        }
+        return mutableProductsLiveOfflineData;
+    }
 
     public StateLiveData<List<String>> getCategories() {
         if (mutableCategoriesLiveData == null) {
-            mutableCategoriesLiveData = productRepository.requestCategories();
+            mutableCategoriesLiveData = productRepository.getCategories();
         }
         return mutableCategoriesLiveData;
     }

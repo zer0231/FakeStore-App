@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private final Context parentContext;
-    List<ProductModel> productsList;
+    private final List<ProductModel> productsList;
 
     public ProductAdapter(Context parentContext, List<ProductModel> productsList) {
         this.parentContext = parentContext;
