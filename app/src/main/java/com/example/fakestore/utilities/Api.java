@@ -16,7 +16,7 @@ public interface Api {
     Call<List<ProductModel>> getProduct();
 
     @POST("products")
-    Call<ProductModel> createProduct(@Body ProductModel productModel);
+    Call<ProductModel> createProduct(@Body ProductModel productModel); //BODY DECORATOR IS FOR IDENTIFYING THE BODY PART FOR POST
 
     @GET("products/categories")
     Call<List<String>> getCategories();

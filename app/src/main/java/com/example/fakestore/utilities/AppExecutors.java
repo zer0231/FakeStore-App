@@ -14,11 +14,8 @@ import java.util.concurrent.Executors;
  * Grouping tasks like this avoids the effects of task starvation (e.g. disk reads don't wait behind
  * webservice requests).
  */
-//This class manages threads for DB; STOLEN FROM GITHUB
+//This class manages threads; STOLEN FROM GITHUB
 public class AppExecutors {
-
-    // For Singleton instantiation
-    private static final Object LOCK = new Object();
     private static AppExecutors sInstance;
     private final Executor diskIO;
     private final Executor mainThread;
@@ -29,31 +26,32 @@ public class AppExecutors {
         this.networkIO = networkIO;
         this.mainThread = mainThread;
     }
-    public static AppExecutors getInstance() {
+
+    public static synchronized AppExecutors getInstance() {  // FOR SINGLETON INSTANTIATION USE synchronized KEYWORD
         if (sInstance == null) {
-            synchronized (LOCK) {
-                sInstance = new AppExecutors(Executors.newSingleThreadExecutor(),
-                        Executors.newFixedThreadPool(3),
-                        new MainThreadExecutor());
-            }
+//            synchronized (LOCK) {
+            sInstance = new AppExecutors(Executors.newSingleThreadExecutor(),
+                    Executors.newFixedThreadPool(3),
+                    new MainThreadExecutor());
+//            }
         }
         return sInstance;
     }
 
     public Executor diskIO() {
         return diskIO;
-    }
+    } //USE THIS TO FETCH DATA FROM DATABASE
 
     public Executor mainThread() {
         return mainThread;
-    }
+    } //THIS IS THE MAIN THREAD
 
     public Executor networkIO() {
         return networkIO;
-    }
+    } //USE THIS TO RUN TASK LIKE FETCH FROM NETWORK
 
     private static class MainThreadExecutor implements Executor {
-        private Handler mainThreadHandler = new Handler(Looper.getMainLooper());
+        private final Handler mainThreadHandler = new Handler(Looper.getMainLooper());
 
         @Override
         public void execute(@NonNull Runnable command) {
