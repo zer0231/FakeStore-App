@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -36,14 +37,28 @@ android {
 }
 
 dependencies {
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+
+    //FOR ANIMATION
+    implementation "com.airbnb.android:lottie:6.0.0"
+
+    //FOR ROOM DATABASE
     implementation "androidx.room:room-runtime:2.5.1"
     annotationProcessor "androidx.room:room-compiler:2.5.1"
+
+    //FOR LOADING IMAGE FROM URL
     implementation 'com.squareup.picasso:picasso:2.8'
+
+    //FOR NAV_GRAPH
     implementation "androidx.navigation:navigation-fragment:2.5.3"
     implementation "androidx.navigation:navigation-ui:2.5.3"
-    implementation 'com.squareup.retrofit2:retrofit:2.7.2'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
-    implementation 'com.squareup.okhttp3:okhttp:3.14.7'
+
+    //FOR MAKING API CALL
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //FOR CREATING CLIENT FOR MAKING API CALL
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

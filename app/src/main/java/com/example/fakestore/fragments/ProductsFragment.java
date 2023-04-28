@@ -1,5 +1,6 @@
 package com.example.fakestore.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fakestore.R;
+import com.example.fakestore.activities.ViewPagerActivity;
 import com.example.fakestore.models.ProductModel;
 import com.example.fakestore.utilities.AppExecutors;
 import com.example.fakestore.utilities.ProductDatabase;
@@ -27,6 +29,7 @@ public class ProductsFragment extends Fragment {
     private ProductViewModel productViewModel;
     private ProductDatabase productDatabase;
     private RecyclerView productsRecyclerView;
+
 
     public ProductsFragment() {
         // Required empty public constructor
@@ -75,7 +78,12 @@ public class ProductsFragment extends Fragment {
         });
 
 
-        fragmentProductsBinding.floatingActionButton.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_productsFragment2_to_createProductFragment));
+        fragmentProductsBinding.floatingActionButton.setOnClickListener(view -> {
+                    Intent i = new Intent(this.getActivity().getApplicationContext(), ViewPagerActivity.class);
+                    startActivity(i);
+                }
+
+        );
         return fragmentProductsBinding.getRoot();
     }
 

@@ -60,8 +60,10 @@ public class CreateProductFragment extends Fragment {
                 switch (productPosted.getStatus()) {
                     case SUCCESS:
                         ProductModel productModel = (ProductModel) productPosted.getData();
-                        assert productModel != null;
-                        Toast.makeText(requireContext(), "Product Added with id: " + productModel.getId(), Toast.LENGTH_SHORT).show();
+
+                        if (productModel != null) {
+                            Toast.makeText(requireContext(), "Product Added with id: " + productModel.getId(), Toast.LENGTH_SHORT).show();
+                        }
                         break;
                     case ERROR:
                         assert productPosted.getError() != null;
